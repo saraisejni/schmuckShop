@@ -1,0 +1,51 @@
+[
+  {
+    "customerUUID": "e5421da4-da75-11ec-9d64-0242ac120002",
+    "name": "Sara",
+    "adresse": "Amzielstrasse 15",
+    "email": "sara.isejn@gmail.com",
+    "creditCardInfo": "Mastercard"
+  },
+    {
+    "customerUUID": "7dc9c1d0-da76-11ec-9d64-0242ac120002",
+    "name": "Anouk",
+    "adresse": "Zielstrasse 116",
+    "email": "anouk.kraft@gmail.com",
+    "creditCardInfo": "Debitkarte"
+  },
+    {
+    "customerUUID": "84d8801e-da77-11ec-9d64-0242ac120002",
+    "name": "Fabian",
+    "adresse": "Kirchgasse 5",
+    "email": "fabian.surber@gmail.com",
+    "creditCardInfo": "Visacard"
+  },
+    {
+    "customerUUID": "920d415c-da77-11ec-9d64-0242ac120002",
+    "name": "Danny",
+    "adresse": "Weihermattstrasse 3",
+    "email": "danny.logiurato@gmail.com",
+    "creditCardInfo": "Mastercard"
+  },
+    {
+    "customerUUID": "c1753f02-da78-11ec-9d64-0242ac120002",
+    "name": "Mike",
+    "adresse": "Uitikonerweg 15",
+    "email": "Mike.meier@gmail.com",
+    "creditCardInfo": "Visacard"
+  },
+    {
+    "customerUUID": "c5c5ca22-da78-11ec-9d64-0242ac120002",
+    "name": "Kevin",
+    "adresse": "Banhofstrasse 10",
+    "email": "Kevin.berger@gmail.com",
+    "creditCardInfo": "Debitkarte"
+  },
+    {
+    "customerUUID": "cc256cec-da78-11ec-9d64-0242ac120002",
+    "name": "Jiro",
+    "adresse": "Bachstrasse 8",
+    "email": "Jiro.schiro@gmail.com",
+    "creditCardInfo": "Mastercard"
+  }
+]
