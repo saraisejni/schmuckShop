@@ -2,11 +2,13 @@ package ch.bzz.schmuckShop.service;
 
 
 import ch.bzz.schmuckShop.data.DataHandler;
+import ch.bzz.schmuckShop.model.Item;
 import ch.bzz.schmuckShop.model.Order;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
@@ -28,6 +30,25 @@ public class OrderService {
         return Response
                 .status(200)
                 .entity(orderList)
+                .build();
+    }
+    /**
+     * reads a book identified by the uuid
+     * @param orderUUID
+     * @return book
+     */
+    @GET
+    @Path("read")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response readBook(@QueryParam("uuid") String orderUUID) {
+        int httpStatus = 200;
+        Order order = DataHandler.getInstance().readOrderByUUID(orderUUID);
+        if (order == null) {
+            httpStatus = 410;
+        }
+        return Response
+                .status(httpStatus)
+                .entity(order)
                 .build();
     }
 }

@@ -1,0 +1,194 @@
+{
+	"id": "1f35b153-514b-4b4f-951a-45f682e1045e",
+	"name": "schmuckShop",
+	"timestamp": "2022-05-23T13:43:38.736Z",
+	"collection_id": "bfec1294-6d7d-4e3c-a1de-fd681b056278",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 0,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "bb261a6b-44cd-426a-86fb-b3338d2200ae",
+			"name": "all Items",
+			"url": "http://localhost:8080/SchmuckShop-1.0/resource/item/list",
+			"time": 37,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				37
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "8a5e603e-5110-455b-943f-a503dc30dd4f",
+			"name": "all Orders",
+			"url": "http://localhost:8080/SchmuckShop-1.0/resource/order/list",
+			"time": 20,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				20
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "5db056e5-78a3-47dd-95bb-40cd3f547fa9",
+			"name": "all Customer",
+			"url": "http://localhost:8080/SchmuckShop-1.0/resource/customer/list",
+			"time": 53,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				53
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "0e79635d-dff5-4063-baca-f0b63ab86606",
+			"name": "ItemByID",
+			"url": "http://localhost:8080/SchmuckShop-1.0/resource/item/read?uuid=e5421da4-da75-11ec-9d64-0242ac120002",
+			"time": 4,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				4
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "67fd136d-89fc-40b3-818c-5a9025ed368d",
+			"name": "CustomerByID",
+			"url": "http://localhost:8080/SchmuckShop-1.0/resource/customer/read?uuid=e5421da4-da75-11ec-9d64-0242ac120002",
+			"time": 7,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				7
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "04fb30f7-8949-45d5-8d56-d1b4706449ef",
+			"name": "orderByID",
+			"url": "http://localhost:8080/SchmuckShop-1.0/resource/order/read?uuid=1156b637-2828-4567-bc54-6a7df586ba13",
+			"time": 4,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				4
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "ce77fce0-c05a-494a-b56e-4c5155efa59f",
+			"name": "wrongURL",
+			"url": "http://localhost:8080/SchmuckShop-1.0/customer/list",
+			"time": 5,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				5
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "82f0b5a6-39cf-4262-84dd-a6106636ceb3",
+			"name": "id out of range",
+			"url": "http://localhost:8080/SchmuckShop-1.0/resource/order/read?uuid=1156b637-2828-4567-bc54-6a7df586ba10",
+			"time": 12,
+			"responseCode": {
+				"code": 410,
+				"name": "Gone"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				12
+			],
+			"allTests": [
+				{}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 142,
+	"collection": {
+		"requests": [
+			{
+				"id": "bb261a6b-44cd-426a-86fb-b3338d2200ae",
+				"method": "GET"
+			},
+			{
+				"id": "8a5e603e-5110-455b-943f-a503dc30dd4f",
+				"method": "GET"
+			},
+			{
+				"id": "5db056e5-78a3-47dd-95bb-40cd3f547fa9",
+				"method": "GET"
+			},
+			{
+				"id": "0e79635d-dff5-4063-baca-f0b63ab86606",
+				"method": "GET"
+			},
+			{
+				"id": "67fd136d-89fc-40b3-818c-5a9025ed368d",
+				"method": "GET"
+			},
+			{
+				"id": "04fb30f7-8949-45d5-8d56-d1b4706449ef",
+				"method": "GET"
+			},
+			{
+				"id": "ce77fce0-c05a-494a-b56e-4c5155efa59f",
+				"method": "GET"
+			},
+			{
+				"id": "82f0b5a6-39cf-4262-84dd-a6106636ceb3",
+				"method": "GET"
+			}
+		]
+	}
+}

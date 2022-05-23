@@ -1,0 +1,209 @@
+{
+	"info": {
+		"_postman_id": "bfec1294-6d7d-4e3c-a1de-fd681b056278",
+		"name": "schmuckShop",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "all Items",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/SchmuckShop-1.0/resource/item/list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"SchmuckShop-1.0",
+						"resource",
+						"item",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "all Orders",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/SchmuckShop-1.0/resource/order/list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"SchmuckShop-1.0",
+						"resource",
+						"order",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "all Customer",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/SchmuckShop-1.0/resource/customer/list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"SchmuckShop-1.0",
+						"resource",
+						"customer",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ItemByID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/SchmuckShop-1.0/resource/item/read?uuid=e5421da4-da75-11ec-9d64-0242ac120002",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"SchmuckShop-1.0",
+						"resource",
+						"item",
+						"read"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "e5421da4-da75-11ec-9d64-0242ac120002"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CustomerByID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/SchmuckShop-1.0/resource/customer/read?uuid=e5421da4-da75-11ec-9d64-0242ac120002",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"SchmuckShop-1.0",
+						"resource",
+						"customer",
+						"read"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "e5421da4-da75-11ec-9d64-0242ac120002"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "orderByID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/SchmuckShop-1.0/resource/order/read?uuid=1156b637-2828-4567-bc54-6a7df586ba13",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"SchmuckShop-1.0",
+						"resource",
+						"order",
+						"read"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "1156b637-2828-4567-bc54-6a7df586ba13"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "wrongURL",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/SchmuckShop-1.0/customer/list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"SchmuckShop-1.0",
+						"customer",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "id out of range",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/SchmuckShop-1.0/resource/order/read?uuid=1156b637-2828-4567-bc54-6a7df586ba10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"SchmuckShop-1.0",
+						"resource",
+						"order",
+						"read"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "1156b637-2828-4567-bc54-6a7df586ba10"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

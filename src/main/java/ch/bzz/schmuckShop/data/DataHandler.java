@@ -114,13 +114,13 @@ public class DataHandler {
 
     /**
      * reads a publisher by its uuid
-     * @param publisherUUID
+     * @param customerUUID
      * @return the Publisher (null=not found)
      */
-    public Customer readPublisherByUUID(String publisherUUID) {
+    public Customer readCustomerByUUID(String customerUUID) {
         Customer customer = null;
         for (Customer entry : getCustomerList()) {
-            if (entry.getCustomerUUID().equals(publisherUUID)) {
+            if (entry.getCustomerUUID().equals(customerUUID)) {
                 customer = entry;
             }
         }
@@ -150,7 +150,7 @@ public class DataHandler {
      * @return  success=true/false
      */
     public boolean deletePublisher(String publisherUUID) {
-        Customer customer = readPublisherByUUID(publisherUUID);
+        Customer customer = readCustomerByUUID(publisherUUID);
         if (customer != null) {
             getCustomerList().remove(customer);
             writeCustomerJSON();

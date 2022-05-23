@@ -35,17 +35,15 @@ public class CustomerService {
 
     /**
      * reads a publisher identified by the uuid
-     * @param publisherUUID
+     * @param customerUUID
      * @return publisher
      */
     @GET
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response readPublisher(
-            @QueryParam("uuid") String publisherUUID
-    ) {
+    public Response readPublisher(@QueryParam("uuid") String customerUUID) {
         int httpStatus = 200;
-        Customer customer = DataHandler.getInstance().readPublisherByUUID(publisherUUID);
+        Customer customer = DataHandler.getInstance().readCustomerByUUID(customerUUID);
         if (customer == null) {
             httpStatus = 410;
         }

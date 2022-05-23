@@ -35,17 +35,15 @@ public class ItemService {
 
     /**
      * reads a book identified by the uuid
-     * @param bookUUID
+     * @param itemUUID
      * @return book
      */
     @GET
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response readBook(
-            @QueryParam("uuid") String bookUUID
-    ) {
+    public Response readBook(@QueryParam("uuid") String itemUUID) {
         int httpStatus = 200;
-        Item item = DataHandler.getInstance().readItemByUUID(bookUUID);
+        Item item = DataHandler.getInstance().readItemByUUID(itemUUID);
         if (item == null) {
             httpStatus = 410;
         }
