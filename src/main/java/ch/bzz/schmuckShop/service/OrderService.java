@@ -5,10 +5,7 @@ import ch.bzz.schmuckShop.data.DataHandler;
 import ch.bzz.schmuckShop.model.Item;
 import ch.bzz.schmuckShop.model.Order;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
@@ -51,4 +48,70 @@ public class OrderService {
                 .entity(order)
                 .build();
     }
+    /**
+     * deletes a book identified by the uuid
+     * @param orderUUID
+     * @return book
+     */
+    @DELETE
+    @Path("delete")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response deleteBook(
+            @QueryParam("uuid") String bookUUID
+    ){
+        int httpStatus = 200;
+        if (!DataHandler.getInstance().deleteOrder(bookUUID)){
+            httpStatus = 410;
+        }
+        return Response
+                .status(httpStatus)
+                .entity("")
+                .build();
+    } @POST
+    @Path("create")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response insertOrder(
+            @Valid @BeanParam Order order,
+            @NotEmpty
+            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
+            @FormParam("publisherUUID") String publisherUUID
+    ) {
+
+        order.setPublisherUUID(publisherUUID);
+
+        DataHandler.insertOrder(order);
+        return Response
+                .status(200)
+                .entity("")
+                .build();
+    }
+    @PUT
+    @Path("update")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response updateBook(
+            @Valid @BeanParam Order order,
+            @NotEmpty
+            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
+            @FormParam("orderUUID") String publisherUUID
+    ) {
+        int httpStatus = 200;
+        Order oldOrder = DataHandler.readOrderByUUID(order.getOrderUUID());
+        if (oldOrder != null) {
+            oldOrder.setDateCreated(order.getDateCreated());
+            oldOrder.setDateShipped(order.getDateShipped());
+            oldOrder.setStatus(order.getStatus());
+            oldOrder.setOrderUUID(order.getOrderUUID());
+
+            DataHandler.updateOrder();
+        } else {
+            httpStatus = 410;
+        }
+        return Response
+                .status(httpStatus)
+                .entity("")
+                .build();
+    }
+
+
+
 }
