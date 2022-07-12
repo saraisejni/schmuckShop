@@ -7,7 +7,7 @@ public class Order {
     @FormParam("orderUUID")
     private String orderUUID;
 
-    @FormParam("dateCReated")
+    @FormParam("dateCreated")
     private String dateCreated;
 
     @FormParam("dateShipped")
