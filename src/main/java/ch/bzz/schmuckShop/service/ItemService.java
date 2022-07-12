@@ -101,9 +101,6 @@ public class ItemService {
     @Produces(MediaType.TEXT_PLAIN)
     public Response insertItem(
             @Valid @BeanParam Item item,
-            @NotEmpty
-            //@Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
-            @FormParam("itemUUID") String itemUUID,
             @CookieParam("userRole") String userRole
     ) {
 
@@ -125,13 +122,10 @@ public class ItemService {
     @Produces(MediaType.TEXT_PLAIN)
     public Response updateBook(
             @Valid @BeanParam Item item,
-            @NotEmpty
-            //@Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
-            @FormParam("itemUUID") String itemUUID,
             @CookieParam("userRole") String userRole
     ) {
         int httpStatus;
-        Item oldItem = DataHandler.getInstance().readItemByUUID(itemUUID);
+        Item oldItem = DataHandler.getInstance().readItemByUUID(item.getItemUUID());
 
         if (userRole == null || userRole.equals("guest")) {
             httpStatus = 403;

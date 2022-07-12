@@ -216,7 +216,7 @@ public class DataHandler {
     public boolean deleteOrder(String orderUUID) {
         Order order = readOrderByUUID(orderUUID);
         if (order != null) {
-            getCustomerList().remove(order);
+            getOrderList().remove(order);
             writeCustomerJSON();
             return true;
         } else {

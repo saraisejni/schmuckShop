@@ -4,7 +4,6 @@ package ch.bzz.schmuckShop.service;
 import ch.bzz.schmuckShop.data.DataHandler;
 import ch.bzz.schmuckShop.model.Customer;
 import javax.validation.Valid;
-import javax.validation.constraints.NotEmpty;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -94,9 +93,6 @@ public class CustomerService {
     @Produces(MediaType.TEXT_PLAIN)
     public Response insertCustomer(
             @Valid @BeanParam Customer customer,
-            @NotEmpty
-            //@Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
-            @FormParam("customerUUID") String customerUUID,
             @CookieParam("userRole") String userRole
     ) {
 
@@ -118,9 +114,6 @@ public class CustomerService {
     @Produces(MediaType.TEXT_PLAIN)
     public Response updateBook(
             @Valid @BeanParam Customer customer,
-            @NotEmpty
-            //@Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
-            @FormParam("orderUUID") String orderUUID,
             @CookieParam("userRole") String userRole
     ) {
         int httpStatus;

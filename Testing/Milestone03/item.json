@@ -1,0 +1,14 @@
+[
+  {
+    "itemUUID": "e5421da4-da75-11ec-9d64-0242ac120002",
+    "name": "Sara",
+    "description": "Silber",
+    "price": 10
+  },
+{
+    "itemUUID": "e5421da4-df75-11ec-9d64-0242ac120002",
+    "name": "Laura",
+    "description": "Gold",
+    "price": 10000
+  }
+]
