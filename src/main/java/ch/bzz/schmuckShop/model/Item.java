@@ -1,10 +1,21 @@
 package ch.bzz.schmuckShop.model;
 
+import javax.ws.rs.FormParam;
+
 public class Item {
 
+
+
+    @FormParam("itemUUID")
     private String itemUUID;
+
+    @FormParam("name")
     private String name;
+
+    @FormParam("description")
     private String description;
+
+    @FormParam("price")
     private int price;
 
     public String getItemUUID() {

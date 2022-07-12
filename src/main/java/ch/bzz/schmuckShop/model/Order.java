@@ -1,10 +1,19 @@
 package ch.bzz.schmuckShop.model;
 
+import javax.ws.rs.FormParam;
+
 public class Order {
 
+    @FormParam("orderUUID")
     private String orderUUID;
+
+    @FormParam("dateCReated")
     private String dateCreated;
+
+    @FormParam("dateShipped")
     private String dateShipped;
+
+    @FormParam("status")
     private String status;
 
     public String getOrderUUID() {

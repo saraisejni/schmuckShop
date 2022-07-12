@@ -39,7 +39,7 @@ public class DataHandler {
 
     /**
      * gets the only instance of this class
-     * @return
+     * @return instance
      */
     public static DataHandler getInstance() {
         if (instance == null)
@@ -140,17 +140,17 @@ public class DataHandler {
     /**
      * updates the publisherList
      */
-    public void updatePublisher() {
+    public void updateCustomer() {
         writeCustomerJSON();
     }
 
     /**
-     * deletes a publisher identified by the publisherUUID
-     * @param publisherUUID  the key
+     * deletes a publisher identified by the customerUUID
+     * @param customerUUID  the key
      * @return  success=true/false
      */
-    public boolean deletePublisher(String publisherUUID) {
-        Customer customer = readCustomerByUUID(publisherUUID);
+    public boolean deleteCustomer(String customerUUID) {
+        Customer customer = readCustomerByUUID(customerUUID);
         if (customer != null) {
             getCustomerList().remove(customer);
             writeCustomerJSON();
@@ -292,7 +292,7 @@ public class DataHandler {
         FileOutputStream fileOutputStream = null;
         Writer fileWriter;
 
-        String bookPath = Config.getProperty("publisherJSON");
+        String bookPath = Config.getProperty("customerJSON");
         try {
             fileOutputStream = new FileOutputStream(bookPath);
             fileWriter = new BufferedWriter(new OutputStreamWriter(fileOutputStream, StandardCharsets.UTF_8));

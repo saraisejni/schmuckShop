@@ -3,14 +3,13 @@ package ch.bzz.schmuckShop.service;
 
 import ch.bzz.schmuckShop.data.DataHandler;
 import ch.bzz.schmuckShop.model.Customer;
-
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
+import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * services for reading, adding, changing and deleting publishers
@@ -25,10 +24,19 @@ public class CustomerService {
     @GET
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response listCustomers() {
-        List<Customer> customerList = DataHandler.getInstance().readAllCustomers();
+    public Response listCustomers(
+            @CookieParam("userRole") String userRole
+    ) {
+        List<Customer> customerList = null;
+        int httpStatus;
+        if (userRole == null || userRole.equals("guest")) {
+            httpStatus = 403;
+        } else {
+            httpStatus = 200;
+            customerList = DataHandler.getInstance().readAllCustomers();
+        }
         return Response
-                .status(200)
+                .status(httpStatus)
                 .entity(customerList)
                 .build();
     }
@@ -41,15 +49,100 @@ public class CustomerService {
     @GET
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response readPublisher(@QueryParam("uuid") String customerUUID) {
-        int httpStatus = 200;
-        Customer customer = DataHandler.getInstance().readCustomerByUUID(customerUUID);
-        if (customer == null) {
-            httpStatus = 410;
+    public Response readPublisher(
+            @QueryParam("uuid") String customerUUID,
+            @CookieParam("userRole") String userRole
+    ) {
+        Customer customer = null;
+        int httpStatus;
+        if (userRole == null || userRole.equals("guest")) {
+            httpStatus = 403;
+        } else {
+            httpStatus = 200;
+            customer = DataHandler.getInstance().readCustomerByUUID(customerUUID);
         }
         return Response
                 .status(httpStatus)
                 .entity(customer)
+                .build();
+    }
+
+    /**
+     * deletes a book identified by the uuid
+     * @param customerUUID
+     * @return book
+     */
+    @DELETE
+    @Path("delete")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response deleteCustomer(
+            @QueryParam("uuid") String customerUUID
+    ){
+        int httpStatus = 200;
+        if (!DataHandler.getInstance().deleteCustomer(customerUUID)){
+            httpStatus = 410;
+        }
+        return Response
+                .status(httpStatus)
+                .entity("")
+                .build();
+    }
+
+
+    @POST
+    @Path("create")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response insertCustomer(
+            @Valid @BeanParam Customer customer,
+            @NotEmpty
+            //@Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
+            @FormParam("customerUUID") String customerUUID,
+            @CookieParam("userRole") String userRole
+    ) {
+
+        int httpStatus;
+        if (userRole == null || userRole.equals("guest")) {
+            httpStatus = 403;
+        } else {
+            httpStatus = 200;
+            customer.setCustomerUUID(UUID.randomUUID().toString());
+            DataHandler.getInstance().insertCustomer(customer);
+        }
+        return Response
+                .status(httpStatus)
+                .entity("")
+                .build();
+    }
+    @PUT
+    @Path("update")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response updateBook(
+            @Valid @BeanParam Customer customer,
+            @NotEmpty
+            //@Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
+            @FormParam("orderUUID") String orderUUID,
+            @CookieParam("userRole") String userRole
+    ) {
+        int httpStatus;
+        Customer oldCustomer = DataHandler.getInstance().readCustomerByUUID(customer.getCustomerUUID());
+
+        if (userRole == null || userRole.equals("guest")) {
+            httpStatus = 403;
+        } else {
+            httpStatus = 200;
+            if (oldCustomer != null) {
+                oldCustomer.setAdresse(customer.getAdresse());
+                oldCustomer.setCreditCardInfo(customer.getCreditCardInfo());
+                oldCustomer.setEmail(customer.getEmail());
+                oldCustomer.setName(customer.getName());
+                DataHandler.getInstance().updateCustomer();
+            } else {
+                httpStatus = 410;
+            }
+        }
+        return Response
+                .status(httpStatus)
+                .entity("")
                 .build();
     }
 }

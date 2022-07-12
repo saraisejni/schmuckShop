@@ -1,12 +1,25 @@
 package ch.bzz.schmuckShop.model;
 
+import javax.ws.rs.FormParam;
+
 public class Customer {
 
+
+    @FormParam("customerUUID")
     private String customerUUID;
+
+    @FormParam("name")
     private String name;
+
+    @FormParam("adresse")
     private String adresse;
+
+    @FormParam("email")
     private String email;
+
+    @FormParam("creditCardInfo")
     private String creditCardInfo;
+
 
     public String getCustomerUUID() {
         return customerUUID;
